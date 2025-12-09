@@ -21,7 +21,7 @@ namespace EverythingComics.Domain.Entities
         public DateTime DataCriacao { get; set; }
         public DateTime? DataEntrega { get; set; }
         public string Status { get; set; }
-        public string ObservacaoStatus { get; set; }
+        public string? ObservacaoStatus { get; set; }
         public Funcionario Funcionario { get; set; }
         public Cliente Cliente { get; set; }
     }

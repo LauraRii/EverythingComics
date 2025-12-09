@@ -53,7 +53,7 @@ namespace EverythingComics.App.Cadastros
             LimparCampos();
         }
 
-        protected void btnEditar_Click(object sender, EventArgs e)
+        protected virtual void btnEditar_Click(object sender, EventArgs e)
         {
             if (dataGridViewBase.SelectedRows.Count > 0)
             {

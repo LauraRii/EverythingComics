@@ -60,11 +60,12 @@
             // 
             // btnNovo
             // 
-            btnNovo.Location = new Point(460, 334);
+            btnNovo.Location = new Point(567, 336);
             // 
             // btnEditar
             // 
-            btnEditar.Location = new Point(558, 334);
+            btnEditar.Location = new Point(7, 348);
+            btnEditar.Visible = false;
             // 
             // btnExcluir
             // 

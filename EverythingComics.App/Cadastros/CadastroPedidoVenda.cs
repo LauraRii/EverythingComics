@@ -1,4 +1,5 @@
-﻿using EverythingComics.Domain.Base;
+﻿using EverythingComics.App.ViewModel;
+using EverythingComics.Domain.Base;
 using EverythingComics.Domain.Entities;
 using EverythingComics.Service.Validations;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +17,7 @@ namespace EverythingComics.App.Cadastros
         private readonly IBaseService<Cliente> _clienteService;
         private readonly IBaseService<Funcionario> _funcService;
         private readonly IBaseService<Produto> _produtoService;
+        private readonly IBaseService<MovimentacaoEstoque> _movService;
 
         private readonly PedidoVendaValidator _validator;
         private PedidoVenda? _vendaAtual;
@@ -26,6 +28,7 @@ namespace EverythingComics.App.Cadastros
             IBaseService<Cliente> clienteService,
             IBaseService<Funcionario> funcService,
             IBaseService<Produto> produtoService,
+            IBaseService<MovimentacaoEstoque> movService, 
             PedidoVendaValidator validator)
         {
             InitializeComponent();
@@ -34,6 +37,7 @@ namespace EverythingComics.App.Cadastros
             _clienteService = clienteService;
             _funcService = funcService;
             _produtoService = produtoService;
+            _movService = movService; 
             _validator = validator;
 
             CarregarCombos();
@@ -66,9 +70,19 @@ namespace EverythingComics.App.Cadastros
 
         protected override void CarregarGrid()
         {
-            var lista = _vendaService.Get();
+            var lista = _vendaService.Get()
+                .Select(v => new PedidoVendaViewModel
+                {
+                    Id = v.Id,
+                    DataCriacao = v.DataCriacao,
+                    DataEntrega = v.DataEntrega,
+                    ClienteNome = v.Cliente.Nome,
+                    FuncionarioNome = v.Funcionario.Nome,
+                    Status = v.Status
+                })
+                .ToList();
             dataGridViewBase.DataSource = lista;
-            dataGridViewBase.Columns["Id"].Visible = false;
+            if (dataGridViewBase.Columns["Id"] != null) dataGridViewBase.Columns["Id"].Visible = false;
         }
 
         protected override void CarregarRegistro(DataGridViewRow row)
@@ -95,6 +109,9 @@ namespace EverythingComics.App.Cadastros
             gridItens.DataSource = null;
             gridItens.DataSource = itensDestaVenda;
 
+            if (gridItens.Columns["Pedido"] != null) gridItens.Columns["Pedido"].Visible = false;
+            if (gridItens.Columns["Produto"] != null) gridItens.Columns["Produto"].Visible = false;
+
             decimal total = itensDestaVenda.Sum(x => x.ValorTotal ?? 0);
             txtTotal.Text = total.ToString("C2");
         }
@@ -105,7 +122,7 @@ namespace EverythingComics.App.Cadastros
 
             _vendaAtual.DataCriacao = dtpDataVenda.Value;
             _vendaAtual.DataEntrega = dtpDataEntrega.Value;
-            _vendaAtual.Status = "Aberta"; 
+            _vendaAtual.Status = "Aberta";
 
             var idCliente = (int)cboCliente.SelectedValue!;
             _vendaAtual.Cliente = _clienteService.GetById(idCliente);
@@ -121,7 +138,7 @@ namespace EverythingComics.App.Cadastros
                 IsUpdate = true;
                 groupBoxItens.Enabled = true;
                 MessageBox.Show("Venda iniciada! Agora adicione os itens abaixo.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return false; 
+                return false;
             }
 
             return true;
@@ -141,7 +158,8 @@ namespace EverythingComics.App.Cadastros
                 item.Pedido = _vendaAtual;
 
                 var idProd = (int)cboProduto.SelectedValue!;
-                item.Produto = _produtoService.GetById(idProd);
+                var produto = _produtoService.GetById(idProd);
+                item.Produto = produto;
 
                 item.Quantidade = int.Parse(txtQtdItem.Text);
                 item.PrecoUnitario = decimal.Parse(txtPrecoUnit.Text);
@@ -149,12 +167,64 @@ namespace EverythingComics.App.Cadastros
 
                 _itemService.Add<ItemVendaValidator>(item);
 
+                var mov = new MovimentacaoEstoque();
+                mov.Produto = produto;
+                mov.Quantidade = item.Quantidade;
+                mov.TipoMovimentacao = false; 
+                mov.DataMovimentacao = DateTime.Now;
+                mov.Observacao = $"Venda #{_vendaAtual.Id}";
+
+                _movService.Add<MovimentacaoEstoqueValidator>(mov);
+
+                produto.QuantidadeEstoque -= item.Quantidade;
+                _produtoService.Update<ProdutoValidator>(produto);
+
                 AtualizarGridItens();
                 txtQtdItem.Clear();
+                MessageBox.Show("Item adicionado e estoque atualizado!");
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Erro ao adicionar item: " + ex.Message);
+            }
+        }
+
+        private void btnRemoverItem_Click(object sender, EventArgs e)
+        {
+            if (gridItens.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Deseja remover este item e devolver ao estoque?", "Confirmação", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    try
+                    {
+                        var itemSelecionado = (ItemVenda)gridItens.SelectedRows[0].DataBoundItem;
+
+                        var mov = new MovimentacaoEstoque();
+                        mov.Produto = itemSelecionado.Produto;
+                        mov.Quantidade = itemSelecionado.Quantidade;
+                        mov.TipoMovimentacao = true; 
+                        mov.DataMovimentacao = DateTime.Now;
+                        mov.Observacao = $"Estorno Venda #{_vendaAtual!.Id}";
+                        _movService.Add<MovimentacaoEstoqueValidator>(mov);
+
+                        var produto = _produtoService.GetById(itemSelecionado.Produto.Id);
+                        produto.QuantidadeEstoque += itemSelecionado.Quantidade;
+                        _produtoService.Update<ProdutoValidator>(produto);
+
+                        _itemService.Delete(itemSelecionado.Id);
+
+                        AtualizarGridItens();
+                        MessageBox.Show("Item removido e estoque estornado.");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Erro ao remover: " + ex.Message);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Selecione um item na lista para remover.");
             }
         }
 
@@ -163,7 +233,7 @@ namespace EverythingComics.App.Cadastros
             _vendaAtual = null;
             txtId.Clear();
             txtTotal.Clear();
-            groupBoxItens.Enabled = false; 
+            groupBoxItens.Enabled = false;
             gridItens.DataSource = null;
         }
     }

@@ -153,6 +153,16 @@ namespace EverythingComics.App.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap btnRemoverItemIcon {
+            get {
+                object obj = ResourceManager.GetObject("btnRemoverItemIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap btnSalvarIcon {
             get {
                 object obj = ResourceManager.GetObject("btnSalvarIcon", resourceCulture);

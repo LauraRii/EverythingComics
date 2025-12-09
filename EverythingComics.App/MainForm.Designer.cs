@@ -152,6 +152,7 @@
             Controls.Add(materialCard1);
             Name = "MainForm";
             Text = "Everything Comics - Sistema de Gestão";
+            WindowState = FormWindowState.Maximized;
             materialCard1.ResumeLayout(false);
             ResumeLayout(false);
         }

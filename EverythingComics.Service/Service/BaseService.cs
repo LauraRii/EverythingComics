@@ -1,8 +1,6 @@
 ﻿using FluentValidation;
 using EverythingComics.Domain.Base;
 using EverythingComics.Repository.Repository;
-using System;
-using System.Collections.Generic;
 
 namespace EverythingComics.Service.Base
 {

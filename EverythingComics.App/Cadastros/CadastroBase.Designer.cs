@@ -98,9 +98,12 @@
             // 
             // dataGridViewBase
             // 
+            dataGridViewBase.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewBase.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewBase.Location = new Point(3, 3);
             dataGridViewBase.Name = "dataGridViewBase";
+            dataGridViewBase.ReadOnly = true;
+            dataGridViewBase.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewBase.Size = new Size(787, 324);
             dataGridViewBase.TabIndex = 0;
             // 

@@ -17,8 +17,6 @@
 
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             txtId = new MaterialSkin.Controls.MaterialTextBox2();
             cboCliente = new MaterialSkin.Controls.MaterialComboBox();
             cboFuncionario = new MaterialSkin.Controls.MaterialComboBox();
@@ -28,6 +26,7 @@
             lblDataEntrega = new MaterialSkin.Controls.MaterialLabel();
             txtTotal = new MaterialSkin.Controls.MaterialTextBox2();
             groupBoxItens = new GroupBox();
+            btnRemoverItem = new MaterialSkin.Controls.MaterialButton();
             gridItens = new DataGridView();
             btnAdicionarItem = new ReaLTaiizor.Controls.MaterialButton();
             txtQtdItem = new MaterialSkin.Controls.MaterialTextBox2();
@@ -91,11 +90,11 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(636, 406);
+            btnCancelar.Location = new Point(636, 433);
             // 
             // btnSalvar
             // 
-            btnSalvar.Location = new Point(520, 406);
+            btnSalvar.Location = new Point(524, 433);
             // 
             // txtId
             // 
@@ -228,6 +227,7 @@
             txtTotal.BackgroundImageLayout = ImageLayout.None;
             txtTotal.CharacterCasing = CharacterCasing.Normal;
             txtTotal.Depth = 0;
+            txtTotal.Enabled = false;
             txtTotal.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             txtTotal.HideSelection = true;
             txtTotal.Hint = "TOTAL DA VENDA (R$)";
@@ -254,6 +254,7 @@
             // groupBoxItens
             // 
             groupBoxItens.BackColor = Color.FromArgb(242, 242, 242);
+            groupBoxItens.Controls.Add(btnRemoverItem);
             groupBoxItens.Controls.Add(gridItens);
             groupBoxItens.Controls.Add(btnAdicionarItem);
             groupBoxItens.Controls.Add(txtQtdItem);
@@ -264,32 +265,38 @@
             groupBoxItens.ForeColor = Color.FromArgb(222, 0, 0, 0);
             groupBoxItens.Location = new Point(20, 160);
             groupBoxItens.Name = "groupBoxItens";
-            groupBoxItens.Size = new Size(740, 220);
+            groupBoxItens.Size = new Size(740, 253);
             groupBoxItens.TabIndex = 6;
             groupBoxItens.TabStop = false;
             groupBoxItens.Text = "Itens da Venda (Salve a venda para habilitar)";
             // 
+            // btnRemoverItem
+            // 
+            btnRemoverItem.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnRemoverItem.BackColor = Color.FromArgb(242, 242, 242);
+            btnRemoverItem.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnRemoverItem.Depth = 0;
+            btnRemoverItem.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            btnRemoverItem.HighEmphasis = false;
+            btnRemoverItem.Icon = Properties.Resources.btnRemoverItemIcon;
+            btnRemoverItem.Location = new Point(549, 77);
+            btnRemoverItem.Margin = new Padding(4, 6, 4, 6);
+            btnRemoverItem.MouseState = MaterialSkin.MouseState.HOVER;
+            btnRemoverItem.Name = "btnRemoverItem";
+            btnRemoverItem.NoAccentTextColor = Color.Empty;
+            btnRemoverItem.Size = new Size(155, 36);
+            btnRemoverItem.TabIndex = 5;
+            btnRemoverItem.Text = "REMOVER ITEM";
+            btnRemoverItem.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnRemoverItem.UseAccentColor = false;
+            btnRemoverItem.UseVisualStyleBackColor = false;
+            btnRemoverItem.Click += btnRemoverItem_Click;
+            // 
             // gridItens
             // 
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            gridItens.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             gridItens.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            dataGridViewCellStyle2.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            gridItens.DefaultCellStyle = dataGridViewCellStyle2;
             gridItens.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            gridItens.Location = new Point(15, 85);
+            gridItens.Location = new Point(15, 122);
             gridItens.Name = "gridItens";
             gridItens.Size = new Size(705, 115);
             gridItens.TabIndex = 4;
@@ -307,12 +314,12 @@
             btnAdicionarItem.Icon = Properties.Resources.btnAdicionarItemIcon;
             btnAdicionarItem.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
             btnAdicionarItem.ImageAlign = ContentAlignment.MiddleRight;
-            btnAdicionarItem.Location = new Point(540, 35);
+            btnAdicionarItem.Location = new Point(549, 24);
             btnAdicionarItem.Margin = new Padding(4, 6, 4, 6);
             btnAdicionarItem.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             btnAdicionarItem.Name = "btnAdicionarItem";
             btnAdicionarItem.NoAccentTextColor = Color.Empty;
-            btnAdicionarItem.Size = new Size(180, 40);
+            btnAdicionarItem.Size = new Size(155, 37);
             btnAdicionarItem.TabIndex = 3;
             btnAdicionarItem.Text = "ADICIONAR ITEM";
             btnAdicionarItem.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -331,7 +338,7 @@
             txtQtdItem.HideSelection = true;
             txtQtdItem.Hint = "Qtd";
             txtQtdItem.LeadingIcon = null;
-            txtQtdItem.Location = new Point(330, 30);
+            txtQtdItem.Location = new Point(321, 24);
             txtQtdItem.MaxLength = 32767;
             txtQtdItem.MouseState = MaterialSkin.MouseState.OUT;
             txtQtdItem.Name = "txtQtdItem";
@@ -361,7 +368,7 @@
             txtPrecoUnit.HideSelection = true;
             txtPrecoUnit.Hint = "Preço (R$)";
             txtPrecoUnit.LeadingIcon = null;
-            txtPrecoUnit.Location = new Point(420, 30);
+            txtPrecoUnit.Location = new Point(407, 24);
             txtPrecoUnit.MaxLength = 32767;
             txtPrecoUnit.MouseState = MaterialSkin.MouseState.OUT;
             txtPrecoUnit.Name = "txtPrecoUnit";
@@ -394,7 +401,7 @@
             cboProduto.Hint = "Produto";
             cboProduto.IntegralHeight = false;
             cboProduto.ItemHeight = 43;
-            cboProduto.Location = new Point(15, 30);
+            cboProduto.Location = new Point(15, 24);
             cboProduto.MaxDropDownItems = 4;
             cboProduto.MouseState = MaterialSkin.MouseState.OUT;
             cboProduto.Name = "cboProduto";
@@ -432,6 +439,7 @@
             tabPageCadastro.ResumeLayout(false);
             tabPageCadastro.PerformLayout();
             groupBoxItens.ResumeLayout(false);
+            groupBoxItens.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)gridItens).EndInit();
             ResumeLayout(false);
         }
@@ -454,5 +462,6 @@
         private MaterialSkin.Controls.MaterialTextBox2 txtPrecoUnit;
         private MaterialSkin.Controls.MaterialComboBox cboProduto;
         private MaterialSkin.Controls.MaterialLabel lblAviso;
+        private MaterialSkin.Controls.MaterialButton btnRemoverItem;
     }
 }

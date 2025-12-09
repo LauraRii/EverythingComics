@@ -88,11 +88,18 @@ namespace EverythingComics.App
             var srvCliente = ConfigureDI.ServicesProvider!.GetService<IBaseService<Cliente>>();
             var srvFunc = ConfigureDI.ServicesProvider!.GetService<IBaseService<Funcionario>>();
             var srvProd = ConfigureDI.ServicesProvider!.GetService<IBaseService<Produto>>();
+
+            var srvMov = ConfigureDI.ServicesProvider!.GetService<IBaseService<MovimentacaoEstoque>>();
+
             var validator = new PedidoVendaValidator();
 
-            if (srvVenda != null)
+            if (srvVenda != null && srvMov != null) 
             {
-                new CadastroPedidoVenda(srvVenda, srvItem, srvCliente, srvFunc, srvProd, validator).ShowDialog();
+                new CadastroPedidoVenda(srvVenda, srvItem, srvCliente, srvFunc, srvProd, srvMov, validator).ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Erro ao carregar serviços.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

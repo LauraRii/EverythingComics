@@ -44,7 +44,7 @@ namespace EverythingComics.Repository.Mapping
 
             builder.Property(prop => prop.Salario)
                 .HasColumnName("salario")
-                .HasPrecision(10, 2); // Importante para decimal(10,2)
+                .HasPrecision(10, 2);
 
             builder.Property(prop => prop.Status)
                 .HasColumnName("status_func")

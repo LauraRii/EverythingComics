@@ -25,9 +25,8 @@
             materialCard1 = new MaterialSkin.Controls.MaterialCard();
             materialCard1.SuspendLayout();
             SuspendLayout();
-            // 
+            
             // btnClientes
-            // 
             btnClientes.AutoSize = false;
             btnClientes.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             btnClientes.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
@@ -45,9 +44,8 @@
             btnClientes.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             btnClientes.UseAccentColor = false;
             btnClientes.Click += btnClientes_Click;
-            // 
+            
             // btnFuncionarios
-            // 
             btnFuncionarios.AutoSize = false;
             btnFuncionarios.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             btnFuncionarios.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
@@ -65,9 +63,8 @@
             btnFuncionarios.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             btnFuncionarios.UseAccentColor = false;
             btnFuncionarios.Click += btnFuncionarios_Click;
-            // 
+            
             // btnProdutos
-            // 
             btnProdutos.AutoSize = false;
             btnProdutos.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             btnProdutos.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
@@ -85,9 +82,8 @@
             btnProdutos.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             btnProdutos.UseAccentColor = false;
             btnProdutos.Click += btnProdutos_Click;
-            // 
+            
             // btnVendas
-            // 
             btnVendas.AutoSize = false;
             btnVendas.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             btnVendas.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
@@ -105,9 +101,8 @@
             btnVendas.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             btnVendas.UseAccentColor = false;
             btnVendas.Click += btnVendas_Click;
-            // 
+            
             // btnEstoque
-            // 
             btnEstoque.AutoSize = false;
             btnEstoque.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             btnEstoque.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
@@ -125,9 +120,8 @@
             btnEstoque.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             btnEstoque.UseAccentColor = false;
             btnEstoque.Click += btnEstoque_Click;
-            // 
+           
             // materialCard1
-            // 
             materialCard1.BackColor = Color.FromArgb(255, 255, 255);
             materialCard1.Controls.Add(btnEstoque);
             materialCard1.Controls.Add(btnVendas);
@@ -143,9 +137,8 @@
             materialCard1.Padding = new Padding(14);
             materialCard1.Size = new Size(766, 258);
             materialCard1.TabIndex = 0;
-            // 
+
             // MainForm
-            // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 788);

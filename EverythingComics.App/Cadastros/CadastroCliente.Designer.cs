@@ -92,6 +92,7 @@
             // txtNome
             // 
             txtNome.AnimateReadOnly = false;
+            txtNome.BackColor = Color.FromArgb(242, 242, 242);
             txtNome.BackgroundImageLayout = ImageLayout.None;
             txtNome.CharacterCasing = CharacterCasing.Normal;
             txtNome.Depth = 0;
@@ -121,6 +122,7 @@
             // txtCnpj
             // 
             txtCnpj.AnimateReadOnly = false;
+            txtCnpj.BackColor = Color.FromArgb(242, 242, 242);
             txtCnpj.BackgroundImageLayout = ImageLayout.None;
             txtCnpj.CharacterCasing = CharacterCasing.Normal;
             txtCnpj.Depth = 0;
@@ -150,6 +152,7 @@
             // txtRua
             // 
             txtRua.AnimateReadOnly = false;
+            txtRua.BackColor = Color.FromArgb(242, 242, 242);
             txtRua.BackgroundImageLayout = ImageLayout.None;
             txtRua.CharacterCasing = CharacterCasing.Normal;
             txtRua.Depth = 0;
@@ -179,6 +182,7 @@
             // txtBairro
             // 
             txtBairro.AnimateReadOnly = false;
+            txtBairro.BackColor = Color.FromArgb(242, 242, 242);
             txtBairro.BackgroundImageLayout = ImageLayout.None;
             txtBairro.CharacterCasing = CharacterCasing.Normal;
             txtBairro.Depth = 0;
@@ -208,6 +212,7 @@
             // txtCidade
             // 
             txtCidade.AnimateReadOnly = false;
+            txtCidade.BackColor = Color.FromArgb(242, 242, 242);
             txtCidade.BackgroundImageLayout = ImageLayout.None;
             txtCidade.CharacterCasing = CharacterCasing.Normal;
             txtCidade.Depth = 0;
@@ -237,7 +242,7 @@
             // cboEstado
             // 
             cboEstado.AutoResize = false;
-            cboEstado.BackColor = Color.FromArgb(255, 255, 255);
+            cboEstado.BackColor = Color.FromArgb(242, 242, 242);
             cboEstado.Depth = 0;
             cboEstado.DrawMode = DrawMode.OwnerDrawVariable;
             cboEstado.DropDownHeight = 174;
@@ -260,6 +265,7 @@
             // txtCep
             // 
             txtCep.AnimateReadOnly = false;
+            txtCep.BackColor = Color.FromArgb(242, 242, 242);
             txtCep.BackgroundImageLayout = ImageLayout.None;
             txtCep.CharacterCasing = CharacterCasing.Normal;
             txtCep.Depth = 0;
@@ -289,6 +295,7 @@
             // txtId
             // 
             txtId.AnimateReadOnly = false;
+            txtId.BackColor = Color.FromArgb(242, 242, 242);
             txtId.BackgroundImageLayout = ImageLayout.None;
             txtId.CharacterCasing = CharacterCasing.Normal;
             txtId.Depth = 0;

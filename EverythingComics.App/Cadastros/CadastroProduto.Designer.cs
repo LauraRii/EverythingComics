@@ -27,14 +27,12 @@
             tabPageConsulta.SuspendLayout();
             tabPageCadastro.SuspendLayout();
             SuspendLayout();
-            // 
+
             // tabPageConsulta
-            // 
             tabPageConsulta.Location = new Point(4, 26);
             tabPageConsulta.Size = new Size(793, 393);
-            // 
+
             // tabPageCadastro
-            // 
             tabPageCadastro.Controls.Add(txtId);
             tabPageCadastro.Controls.Add(txtNome);
             tabPageCadastro.Controls.Add(txtPreco);
@@ -51,29 +49,24 @@
             tabPageCadastro.Controls.SetChildIndex(txtId, 0);
             tabPageCadastro.Controls.SetChildIndex(btnSalvar, 0);
             tabPageCadastro.Controls.SetChildIndex(btnCancelar, 0);
-            // 
+            
             // btnNovo
-            // 
             btnNovo.Location = new Point(460, 334);
-            // 
+
             // btnEditar
-            // 
             btnEditar.Location = new Point(558, 334);
-            // 
+
             // btnExcluir
-            // 
+            
             btnExcluir.Location = new Point(665, 334);
-            // 
+            
             // btnCancelar
-            // 
             btnCancelar.Location = new Point(662, 321);
-            // 
+            
             // btnSalvar
-            // 
             btnSalvar.Location = new Point(550, 321);
-            // 
+            
             // txtId
-            // 
             txtId.AnimateReadOnly = false;
             txtId.BackColor = Color.FromArgb(242, 242, 242);
             txtId.BackgroundImageLayout = ImageLayout.None;
@@ -101,9 +94,8 @@
             txtId.TextAlign = HorizontalAlignment.Left;
             txtId.TrailingIcon = null;
             txtId.UseSystemPasswordChar = false;
-            // 
+             
             // txtNome
-            // 
             txtNome.AnimateReadOnly = false;
             txtNome.BackColor = Color.FromArgb(242, 242, 242);
             txtNome.BackgroundImageLayout = ImageLayout.None;
@@ -131,9 +123,8 @@
             txtNome.TextAlign = HorizontalAlignment.Left;
             txtNome.TrailingIcon = null;
             txtNome.UseSystemPasswordChar = false;
-            // 
+            
             // txtQtdEstoque
-            // 
             txtQtdEstoque.AnimateReadOnly = false;
             txtQtdEstoque.BackColor = Color.FromArgb(242, 242, 242);
             txtQtdEstoque.BackgroundImageLayout = ImageLayout.None;
@@ -161,9 +152,8 @@
             txtQtdEstoque.TextAlign = HorizontalAlignment.Left;
             txtQtdEstoque.TrailingIcon = null;
             txtQtdEstoque.UseSystemPasswordChar = false;
-            // 
+            
             // txtPreco
-            // 
             txtPreco.AnimateReadOnly = false;
             txtPreco.BackColor = Color.FromArgb(242, 242, 242);
             txtPreco.BackgroundImageLayout = ImageLayout.None;
@@ -191,9 +181,8 @@
             txtPreco.TextAlign = HorizontalAlignment.Left;
             txtPreco.TrailingIcon = null;
             txtPreco.UseSystemPasswordChar = false;
-            // 
+            
             // dtpDataCriacao
-            // 
             dtpDataCriacao.BackColor = Color.FromArgb(242, 242, 242);
             dtpDataCriacao.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             dtpDataCriacao.ForeColor = Color.FromArgb(222, 0, 0, 0);
@@ -202,9 +191,8 @@
             dtpDataCriacao.Name = "dtpDataCriacao";
             dtpDataCriacao.Size = new Size(150, 24);
             dtpDataCriacao.TabIndex = 5;
-            // 
+            
             // lblDataCriacao
-            // 
             lblDataCriacao.AutoSize = true;
             lblDataCriacao.BackColor = Color.FromArgb(242, 242, 242);
             lblDataCriacao.Depth = 0;
@@ -216,9 +204,8 @@
             lblDataCriacao.Size = new Size(118, 19);
             lblDataCriacao.TabIndex = 4;
             lblDataCriacao.Text = "Data de Criação:";
-            // 
+            
             // CadastroProduto
-            // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 514);
